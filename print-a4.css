@@ -1,0 +1,30 @@
+/* A4-proportioned pages at the design's native 1240px width (no scaling/clipping).
+   1240 : 1754 ≈ 210mm : 297mm (A4 portrait). Imports to Canva as A4 pages. */
+@page { size: 1240px 1754px; margin: 0; }
+html, body { width: 1240px; }
+
+/* Make every animated block visible (no JS scroll in print) */
+.reveal { opacity: 1 !important; transform: none !important; }
+
+/* Static header + hide mobile toggle */
+.header { position: static !important; backdrop-filter: none !important; background: #fff !important; }
+.nav-toggle { display: none !important; }
+
+/* Tighter vertical rhythm so pages pack well */
+.sec { padding: 3.2rem 0 !important; }
+.sec--tight { padding: 2.2rem 0 !important; }
+.hero__grid { padding: 2.6rem 0 3rem !important; }
+.final__inner { padding: 3.2rem 0 !important; }
+.footer { padding: 2.6rem 0 1.6rem !important; }
+.sec-head { margin-bottom: 1.8rem !important; }
+
+/* Keep components whole across page breaks */
+.risk, .pillar, .step, .obra, .corp-card, .metric,
+.hero__media, .why__media, .sec-head, .clients__grid,
+.final__inner, .footer__top, img { break-inside: avoid; }
+
+/* Start the biggest editorial moments on a fresh page */
+#processo, #porque, #obras, #corporativo, .final { break-before: page; }
+
+/* Ensure colored sections print their backgrounds */
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Módulo2 Obras Comerciais · Sua loja aberta e faturando no dia marcado</title>
+<meta name="description" content="30 anos construindo lojas de varejo em shoppings, lojas de rua e obras corporativas. Fidelidade total ao projeto, prazo do shopping cumprido, chave na mão. Atendemos SC e PR.">
+<link rel="preconnect" href="">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="print.css" media="print">
+<meta property="og:title" content="Módulo2 · Obras Comerciais">
+<meta property="og:description" content="Sua loja aberta e faturando no dia marcado. Sem desculpas. Sem surpresas.">
+<meta name="theme-color" content="#ccc0b6">
+<script>
+  /* Marca a camada de animação cedo (antes do paint) para esconder os
+     elementos que o GSAP irá revelar, evitando qualquer flash de conteúdo.
+     Se o JS estiver desligado, .anim nunca é adicionada e tudo aparece. */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('anim');
+  }
+</script>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="#topo" class="header__logo" aria-label="Módulo2 Obras Comerciais, início">
+      <img src="assets/img/logo-taupe.png" alt="Módulo2 Obras Comerciais">
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#riscos">Os riscos</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#processo">Processo</a>
+      <a href="#obras">Obras</a>
+      <a href="#corporativo">Corporativo</a>
+    </nav>
+    <div class="header__cta">
+      <a href="https://instagram.com/modulo.2" target="_blank" rel="noopener" class="header__ig" aria-label="Instagram da Módulo2">
+        <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="22" cy="22" r="20.5" stroke="currentColor" stroke-width="2"/>
+          <rect x="13" y="13" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="4.5" stroke="currentColor" stroke-width="1.9"/>
+          <circle cx="27.2" cy="16.8" r="1.1" fill="currentColor"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <a href="#riscos">Os riscos</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#processo">Processo</a>
+      <a href="#obras">Obras</a>
+      <a href="#corporativo">Corporativo</a>
+      <a href="#contato" class="btn btn--primary btn--block">Agende uma viabilidade</a>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="assets/img/photos/hero-anacapri.png" alt="Loja AnaCapri entregue pela Módulo2" loading="eager" fetchpriority="high">
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <div class="hero__pills">
+        <span class="hero__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg>
+          +200 lojas entregues
+        </span>
+        <span class="hero__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          30+ anos de experiência
+        </span>
+        <span class="hero__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Inaugurações sempre no prazo
+        </span>
+      </div>
+      <h1>Especialistas em Implantação <em>Comercial.</em></h1>
+      <p class="hero__lead">Há mais de 30 anos no mercado executando lojas de shopping, lojas de rua e obras corporativas.</p>
+      <div class="hero__cta">
+        <a href="https://wa.me/5547999639566" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Fale com um arquiteto</a>
+        <a href="#obras" class="btn btn--ghost-light btn--lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          Ver Portfólio
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROVA SOCIAL ===================== -->
+<section class="clients sec--tight">
+  <div class="wrap">
+    <p class="clients__label"><b>A confiança das maiores marcas do Brasil.</b> Redes e franquias que entregamos no padrão.</p>
+    <div class="clients__grid">
+      <span>O Boticário</span>
+      <span>Havaianas</span>
+      <span>AnaCapri</span>
+      <span>Lez a Lez</span>
+      <span>Cia Marítima</span>
+      <span>Hope</span>
+      <span>Adcos</span>
+      <span>Mensageiro dos Sonhos</span>
+      <span>Sakae</span>
+      <span>+ redes nacionais</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OS 3 RISCOS ===================== -->
+<section class="sec sec--taupe" id="riscos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__title">Três riscos transformam uma inauguração em prejuízo.</h2>
+      <p class="sec-head__lead">Cada dia de atraso é aluguel pago sem faturar. Conhecemos onde a obra de varejo costuma travar e assumimos esses pontos antes que virem problema seu.</p>
+    </div>
+    <div class="risks">
+      <article class="risk reveal">
+        <span class="risk__n">Risco 01</span>
+        <h3>A lacuna do projeto</h3>
+        <p>Empreiteiros que não leem o projeto arquitetônico e executam por conta própria. O padrão da marca se perde no acabamento, e a correção sai do seu bolso.</p>
+      </article>
+      <article class="risk reveal">
+        <span class="risk__n">Risco 02</span>
+        <h3>Pesadelos burocráticos</h3>
+        <p>Aprovações, horários de carga e descarga e normas técnicas de cada shopping. Uma exigência não atendida e a obra para, junto com a data de abertura.</p>
+      </article>
+      <article class="risk reveal">
+        <span class="risk__n">Risco 03</span>
+        <h3>Logística de materiais</h3>
+        <p>Receber, conferir e guardar tudo no canteiro. Material errado, faltando ou avariado na hora da montagem empurra o cronograma inteiro.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIFERENCIAIS / PILARES ===================== -->
+<section class="sec" id="diferenciais">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__title">Somos arquitetos no canteiro. O projeto é <em style="color:#8c310a">sagrado.</em></h2>
+      <p class="sec-head__lead">Os sócios arquitetos acompanham a obra em campo, todos os dias. Dois compromissos guiam cada decisão de execução.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar reveal">
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Fidelidade total às especificações</h3>
+        <p>Seguimos o projeto arquitetônico à risca. Nunca trocamos materiais sem aprovação prévia. O padrão da sua marca chega à loja exatamente como foi desenhado.</p>
+        <img class="pillar__mono" src="assets/img/monogram-white.png" alt="" aria-hidden="true">
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5 4 4"/><path d="m13 7 1.5-1.5a2.12 2.12 0 0 1 3 3L8 17l-4 1 1-4Z"/><path d="M3 21h18"/></svg>
+        </div>
+        <h3>Levantamento técnico do ponto</h3>
+        <p>Atuamos como ponte entre o canteiro e o escritório de projetos. Encontrou uma inconsistência no projeto? Intermediamos e resolvemos tecnicamente, antes que vire atraso.</p>
+        <img class="pillar__mono" src="assets/img/monogram-white.png" alt="" aria-hidden="true">
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESSO ===================== -->
+<section class="sec sec--dark" id="processo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow eyebrow--light">Do briefing à inauguração</p>
+      <h2 class="sec-head__title">Um único responsável, em cinco frentes.</h2>
+      <p class="sec-head__lead">Assumimos a obra inteira para que a sua marca chegue ao shopping no prazo certo. Cada etapa tem dono, prazo e padrão definidos.</p>
+    </div>
+    <div class="steps">
+      <article class="step reveal">
+        <div class="step__rail"><span class="step__dot"></span><span class="step__bar"></span></div>
+        <span class="step__n">01</span>
+        <h3>Levantamento técnico</h3>
+        <p>Medições e vistoria do ponto. Validamos o projeto contra a realidade do espaço e do shopping.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__rail"><span class="step__dot"></span><span class="step__bar"></span></div>
+        <span class="step__n">02</span>
+        <h3>Planejamento executivo</h3>
+        <p>Cronograma, contratação de fornecedores e planejamento de cada frente de serviço.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__rail"><span class="step__dot"></span><span class="step__bar"></span></div>
+        <span class="step__n">03</span>
+        <h3>Execução da obra</h3>
+        <p>Acompanhamento diário dos sócios arquitetos em campo, com total fidelidade ao projeto especificado.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__rail"><span class="step__dot"></span><span class="step__bar"></span></div>
+        <span class="step__n">04</span>
+        <h3>Entrega e inauguração</h3>
+        <p>Loja pronta para vender no dia previsto. Chave na mão, sem surpresas de prazo ou acabamento.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__rail"><span class="step__dot"></span><span class="step__bar"></span></div>
+        <span class="step__n">05</span>
+        <h3>Pós-obra ativo</h3>
+        <p>Acompanhamento no período de garantia e suporte para ajustes depois da abertura da loja.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== POR QUE A MÓDULO2 ===================== -->
+<section class="sec" id="porque">
+  <div class="wrap">
+    <div class="why">
+      <div class="why__copy reveal">
+        <h2 class="sec-head__title">30 anos que fazem a diferença em cada detalhe.</h2>
+        <p class="sec-head__lead">Em mais de 200 lojas entregues, aprendemos o varejo brasileiro por dentro. Conhecemos os prazos e normas dos shoppings, as exigências das redes e a melhor solução para cada tipo de implantação.</p>
+        <ul class="why__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Sócios arquitetos em campo</b>: acompanhamento diário da obra, não relatórios à distância.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Execução fiel ao projeto</b>: sem substituição de materiais por inferiores.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Experiência em shoppings, franquias e redes</b> nacionais de varejo.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Controle logístico</b>: recebimento e gerenciamento de todos os materiais na obra.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Atendimento completo</b>: do levantamento técnico ao pós-obra.</span></li>
+        </ul>
+      </div>
+      <div class="why__media reveal">
+        <img src="assets/img/photos/interior-anacapri.png" alt="Interior de loja AnaCapri entregue pela Módulo2">
+      </div>
+    </div>
+
+    <div class="metrics reveal">
+      <div class="metric"><b>+200</b><span>lojas entregues</span></div>
+      <div class="metric"><b>30+</b><span>anos de mercado</span></div>
+      <div class="metric"><b>SC · PR</b><span>estados atendidos</span></div>
+      <div class="metric"><b>0</b><span>atrasos de inauguração</span></div>
+      <div class="metric"><b>100%</b><span>fidelidade ao projeto</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OBRAS ENTREGUES ===================== -->
+<section class="sec sec--clay" id="obras">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Obras entregues</p>
+      <h2 class="sec-head__title">A marca prova-se pelo resultado, não por renders.</h2>
+      <p class="sec-head__lead">Lojas reais, abertas no prazo, no padrão de cada rede. Toque em uma foto para ver de perto.</p>
+    </div>
+    <div class="obras" id="obras-grid">
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ampliar foto da loja Havaianas"
+          data-full="assets/img/photos/storefront-havaianas.png" data-name="Havaianas" data-meta="Loja de shopping · varejo de moda">
+          <img src="assets/img/photos/storefront-havaianas.png" alt="Fachada da loja Havaianas entregue pela Módulo2" loading="lazy">
+          <span class="obra__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+        <figcaption class="obra__body">
+          <div><h3>Havaianas</h3><span class="obra__loc">Loja de shopping · varejo de moda</span></div>
+          <span class="obra__tag">Entregue</span>
+        </figcaption>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ampliar foto do interior da loja AnaCapri"
+          data-full="assets/img/photos/interior-anacapri.png" data-name="AnaCapri" data-meta="Interior · acabamento e iluminação">
+          <img src="assets/img/photos/interior-anacapri.png" alt="Interior da loja AnaCapri com acabamento e iluminação entregue pela Módulo2" loading="lazy">
+          <span class="obra__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+        <figcaption class="obra__body">
+          <div><h3>AnaCapri</h3><span class="obra__loc">Interior · acabamento e iluminação</span></div>
+          <span class="obra__tag">Entregue</span>
+        </figcaption>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ampliar foto da loja AnaCapri"
+          data-full="assets/img/photos/storefront-anacapri.png" data-name="AnaCapri" data-meta="Loja de shopping · calçados">
+          <img src="assets/img/photos/storefront-anacapri.png" alt="Fachada da loja AnaCapri entregue pela Módulo2" loading="lazy">
+          <span class="obra__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+        <figcaption class="obra__body">
+          <div><h3>AnaCapri</h3><span class="obra__loc">Loja de shopping · calçados</span></div>
+          <span class="obra__tag">Entregue</span>
+        </figcaption>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ampliar foto da loja Hope"
+          data-full="assets/img/photos/storefront-hope.png" data-name="Hope" data-meta="Loja de shopping · lingerie">
+          <img src="assets/img/photos/storefront-hope.png" alt="Fachada da loja Hope entregue pela Módulo2" loading="lazy">
+          <span class="obra__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+        <figcaption class="obra__body">
+          <div><h3>Hope</h3><span class="obra__loc">Loja de shopping · lingerie</span></div>
+          <span class="obra__tag">Entregue</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="obras__more reveal">Cada nova inauguração é registrada no nosso <a href="https://instagram.com/modulo.2" target="_blank" rel="noopener">Instagram</a>.</p>
+  </div>
+</section>
+
+<!-- ===================== ALÉM DO VAREJO ===================== -->
+<section class="sec sec--pastel" id="corporativo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__title">A mesma exigência, agora no corporativo.</h2>
+      <p class="sec-head__lead">A experiência de execução de alta exigência do varejo premium se aplica a escritórios, recepções e espaços de atendimento que pedem acabamento preciso e prazo cumprido.</p>
+    </div>
+    <div class="corp">
+      <article class="corp-card reveal">
+        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></div>
+        <h3>Escritórios</h3>
+        <p>Salas executivas e espaços de trabalho com acabamento comercial.</p>
+      </article>
+      <article class="corp-card reveal">
+        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 13v.01M9 17v.01"/></svg></div>
+        <h3>Recepções</h3>
+        <p>Ambientes de atendimento e entrada corporativa de alto padrão.</p>
+      </article>
+      <article class="corp-card reveal">
+        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 11a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7Z"/><path d="M3 9 6 3h12l3 6"/><path d="M9 13a3 3 0 0 0 6 0"/></svg></div>
+        <h3>Espaços de negócio</h3>
+        <p>Franquias de serviços e pontos de venda especializados.</p>
+      </article>
+      <article class="corp-card reveal">
+        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg></div>
+        <h3>Retrofit comercial</h3>
+        <p>Atualização e reforma de ambientes existentes com o mínimo de interrupção.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="final" id="contato">
+  <div class="wrap final__inner reveal">
+    <p class="eyebrow">Vamos começar</p>
+    <h2>Pronto para construir sua obra comercial com especialistas?</h2>
+    <div class="final__cta">
+      <a href="https://wa.me/5547999639566" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Fale com um arquiteto</a>
+    </div>
+    <p class="final__sub">Resposta em até 1 dia útil · Atendimento em Santa Catarina e Paraná</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.png" alt="Módulo2 Obras Comerciais">
+        <p>Arquitetura e execução de obras comerciais para o varejo premium e o setor corporativo. Fidelidade ao projeto, prazo do shopping cumprido, chave na mão.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Empresa</h4>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#processo">Processo</a>
+        <a href="#obras">Obras entregues</a>
+        <a href="#porque">Por que a Módulo2</a>
+      </div>
+      <div class="footer__col">
+        <h4>Atuação</h4>
+        <a href="#obras">Lojas de shopping</a>
+        <a href="#obras">Lojas de rua</a>
+        <a href="#corporativo">Obras corporativas</a>
+        <a href="#corporativo">Retrofit comercial</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <a href="mailto:christian@modulo2.com.br">christian@modulo2.com.br</a>
+        <a class="footer__wa" href="https://wa.me/5547999852193">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+          (47) 99985-2193
+        </a>
+        <a class="footer__wa" href="https://wa.me/5547999639566">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+          (47) 99963-9566
+        </a>
+        <p>Rua Bolívia, 497, Ponta Aguda<br>Blumenau/SC, Brasil · CEP 89050-300</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Módulo2 Obras Comerciais. Todos os direitos reservados.</span>
+      <span>30 anos · +200 lojas entregues</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualização da obra">
+  <button class="lightbox__close" id="lbClose" type="button" aria-label="Fechar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" type="button" aria-label="Obra anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <figure class="lightbox__stage">
+    <img id="lbImg" src="" alt="">
+    <figcaption class="lightbox__cap" id="lbCap"></figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" type="button" aria-label="Próxima obra">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+  // Mobile nav
+  (function(){
+    var t = document.getElementById('navToggle'), m = document.getElementById('mnav');
+    if(t && m){
+      t.addEventListener('click', function(){
+        var open = m.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      m.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ m.classList.remove('open'); t.setAttribute('aria-expanded','false'); });
+      });
+    }
+  })();
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

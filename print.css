@@ -1,0 +1,9 @@
+@page { size: 1240px 8420px; margin: 0; }
+html, body { width: 1240px; }
+/* Neutraliza a camada de animação para o PDF (nada pode sair escondido) */
+.reveal,
+.hero__pill, .hero h1, .hero__lead, .hero__cta > *,
+.step__dot, .step__bar, .obra__img img, .hero__bg img,
+.hero__copy { opacity:1 !important; transform:none !important; clip-path:none !important; }
+.header { position: static !important; }
+.nav-toggle { display:none !important; }
