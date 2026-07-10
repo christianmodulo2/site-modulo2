@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="print.css" media="print">
 <meta property="og:title" content="Módulo2 · Obras Comerciais">
 <meta property="og:description" content="Sua loja aberta e faturando no dia marcado. Sem desculpas. Sem surpresas.">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ccc0b6">
 <script>
   /* Marca a camada de animação cedo (antes do paint) para esconder os
@@ -18,6 +19,14 @@
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('anim');
   }
+  /* Tema claro/escuro: aplica antes do paint para não piscar o tema errado.
+     Prioridade: escolha salva > preferência do sistema > claro (padrão da marca). */
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('m2-theme'); } catch (e) {}
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
 </script>
 </head>
 <body>
@@ -44,6 +53,15 @@
           <circle cx="27.2" cy="16.8" r="1.1" fill="currentColor"/>
         </svg>
       </a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar para modo escuro">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.3A8.3 8.3 0 1 1 9.7 4a6.6 6.6 0 0 0 10.3 10.3Z"/>
+        </svg>
+      </button>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -102,17 +120,34 @@
 <section class="clients sec--tight">
   <div class="wrap">
     <p class="clients__label"><b>A confiança das maiores marcas do Brasil.</b> Redes e franquias que entregamos no padrão.</p>
-    <div class="clients__grid">
-      <span>O Boticário</span>
-      <span>Havaianas</span>
-      <span>AnaCapri</span>
-      <span>Lez a Lez</span>
-      <span>Cia Marítima</span>
-      <span>Hope</span>
-      <span>Adcos</span>
-      <span>Mensageiro dos Sonhos</span>
-      <span>Sakae</span>
-      <span>+ redes nacionais</span>
+  </div>
+  <!-- Esteira infinita: 2 blocos idênticos lado a lado, animados -50% para o
+       loop ficar contínuo. O CSS deixa qualquer logo monocromática num tom
+       terroso automaticamente (ver .clients__logo img), não importa a cor original. -->
+  <div class="clients__marquee">
+    <div class="clients__track">
+      <div class="clients__set">
+        <span class="clients__logo"><img src="assets/img/logos/logo-o_boticario.png" alt="O Boticário"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-havainas.png" alt="Havaianas"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-anacapri.png" alt="AnaCapri"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-les-a-les.png" alt="Lez a Lez"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-cia_marítima.png" alt="Cia Marítima"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-hope.png" alt="Hope"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-adcos.png" alt="Adcos"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-sakae.png" alt="Sakae"></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-live.png" alt="Live"></span>
+      </div>
+      <div class="clients__set" aria-hidden="true">
+        <span class="clients__logo"><img src="assets/img/logos/logo-o_boticario.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-havainas.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-anacapri.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-les-a-les.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-cia_marítima.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-hope.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-adcos.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-sakae.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos/logo-live.png" alt=""></span>
+      </div>
     </div>
   </div>
 </section>
@@ -255,56 +290,160 @@
     </div>
     <div class="obras" id="obras-grid">
       <figure class="obra reveal">
-        <button class="obra__img" type="button" aria-label="Ampliar foto da loja Havaianas"
-          data-full="assets/img/photos/storefront-havaianas.png" data-name="Havaianas" data-meta="Loja de shopping · varejo de moda">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Havaianas"
+          data-name="Havaianas" data-meta="Loja de shopping · varejo de moda"
+          data-photos='[
+            {"src":"assets/img/photos/storefront-havaianas.png","alt":"Fachada da loja Havaianas entregue pela Módulo2","caption":"Fachada · loja de shopping, varejo de moda"},
+            {"src":"assets/img/photos/interior-havaianas.png","alt":"Interior da loja Havaianas entregue pela Módulo2","caption":"Interior · araras e acabamento"}
+          ]'>
           <img src="assets/img/photos/storefront-havaianas.png" alt="Fachada da loja Havaianas entregue pela Módulo2" loading="lazy">
-          <span class="obra__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            2 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Havaianas</span>
+            <span class="obra__cta">Ver projeto</span>
           </span>
         </button>
-        <figcaption class="obra__body">
-          <div><h3>Havaianas</h3><span class="obra__loc">Loja de shopping · varejo de moda</span></div>
-          <span class="obra__tag">Entregue</span>
-        </figcaption>
       </figure>
       <figure class="obra reveal">
-        <button class="obra__img" type="button" aria-label="Ampliar foto do interior da loja AnaCapri"
-          data-full="assets/img/photos/interior-anacapri.png" data-name="AnaCapri" data-meta="Interior · acabamento e iluminação">
-          <img src="assets/img/photos/interior-anacapri.png" alt="Interior da loja AnaCapri com acabamento e iluminação entregue pela Módulo2" loading="lazy">
-          <span class="obra__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
-          </span>
-        </button>
-        <figcaption class="obra__body">
-          <div><h3>AnaCapri</h3><span class="obra__loc">Interior · acabamento e iluminação</span></div>
-          <span class="obra__tag">Entregue</span>
-        </figcaption>
-      </figure>
-      <figure class="obra reveal">
-        <button class="obra__img" type="button" aria-label="Ampliar foto da loja AnaCapri"
-          data-full="assets/img/photos/storefront-anacapri.png" data-name="AnaCapri" data-meta="Loja de shopping · calçados">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja AnaCapri"
+          data-name="AnaCapri" data-meta="Loja de shopping · calçados"
+          data-photos='[
+            {"src":"assets/img/photos/storefront-anacapri.png","alt":"Fachada da loja AnaCapri entregue pela Módulo2","caption":"Fachada · loja de shopping, calçados"},
+            {"src":"assets/img/photos/interior-anacapri.png","alt":"Interior da loja AnaCapri com acabamento e iluminação entregue pela Módulo2","caption":"Interior · acabamento e iluminação"},
+            {"src":"assets/img/photos/detail-anacapri.jpeg","alt":"Área de acessórios da loja AnaCapri entregue pela Módulo2","caption":"Interior · área de acessórios"}
+          ]'>
           <img src="assets/img/photos/storefront-anacapri.png" alt="Fachada da loja AnaCapri entregue pela Módulo2" loading="lazy">
-          <span class="obra__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            3 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">AnaCapri</span>
+            <span class="obra__cta">Ver projeto</span>
           </span>
         </button>
-        <figcaption class="obra__body">
-          <div><h3>AnaCapri</h3><span class="obra__loc">Loja de shopping · calçados</span></div>
-          <span class="obra__tag">Entregue</span>
-        </figcaption>
       </figure>
       <figure class="obra reveal">
-        <button class="obra__img" type="button" aria-label="Ampliar foto da loja Hope"
-          data-full="assets/img/photos/storefront-hope.png" data-name="Hope" data-meta="Loja de shopping · lingerie">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Hope"
+          data-name="Hope" data-meta="Loja de shopping · lingerie"
+          data-photos='[
+            {"src":"assets/img/photos/storefront-hope.png","alt":"Fachada da loja Hope entregue pela Módulo2","caption":"Fachada · loja de shopping, lingerie"},
+            {"src":"assets/img/photos/interior-hope.jpg","alt":"Interior da loja Hope entregue pela Módulo2","caption":"Interior · araras e vitrine"}
+          ]'>
           <img src="assets/img/photos/storefront-hope.png" alt="Fachada da loja Hope entregue pela Módulo2" loading="lazy">
-          <span class="obra__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            2 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Hope</span>
+            <span class="obra__cta">Ver projeto</span>
           </span>
         </button>
-        <figcaption class="obra__body">
-          <div><h3>Hope</h3><span class="obra__loc">Loja de shopping · lingerie</span></div>
-          <span class="obra__tag">Entregue</span>
-        </figcaption>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Lez a Lez"
+          data-name="Lez a Lez" data-meta="Loja de shopping · varejo de moda"
+          data-photos='[{"src":"assets/img/photos/storefront-lesaleles.jpg","alt":"Fachada da loja Lez a Lez entregue pela Módulo2"}]'>
+          <img src="assets/img/photos/storefront-lesaleles.jpg" alt="Fachada da loja Lez a Lez entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Lez a Lez</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Cia Marítima"
+          data-name="Cia Marítima" data-meta="Loja de shopping · moda praia"
+          data-photos='[
+            {"src":"assets/img/photos/storefront-ciamaritima.jpeg","alt":"Fachada da loja Cia Marítima entregue pela Módulo2","caption":"Fachada · loja de shopping, moda praia"},
+            {"src":"assets/img/photos/storefront-ciamaritima-noite.jpeg","alt":"Fachada noturna da loja Cia Marítima entregue pela Módulo2","caption":"Fachada · vista noturna"},
+            {"src":"assets/img/photos/interior-ciamaritima-1.jpeg","alt":"Interior da loja Cia Marítima entregue pela Módulo2","caption":"Interior · araras e vitrine"},
+            {"src":"assets/img/photos/interior-ciamaritima-2.jpeg","alt":"Interior da loja Cia Marítima com identidade visual entregue pela Módulo2","caption":"Interior · identidade da marca"},
+            {"src":"assets/img/photos/interior-ciamaritima-3.jpeg","alt":"Vitrine da loja Cia Marítima entregue pela Módulo2","caption":"Vitrine · manequins"}
+          ]'>
+          <img src="assets/img/photos/storefront-ciamaritima.jpeg" alt="Fachada da loja Cia Marítima entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            5 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Cia Marítima</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja O Boticário"
+          data-name="O Boticário" data-meta="Loja de shopping · perfumaria e cosméticos"
+          data-photos='[
+            {"src":"assets/img/photos/storefront-oboticario.png","alt":"Fachada da loja O Boticário entregue pela Módulo2","caption":"Fachada · loja de shopping, perfumaria e cosméticos"},
+            {"src":"assets/img/photos/interior-oboticario-1.jpg","alt":"Interior da loja O Boticário entregue pela Módulo2","caption":"Interior · prateleiras e caixa"},
+            {"src":"assets/img/photos/interior-oboticario-2.jpg","alt":"Interior da loja O Boticário com seção de perfumaria entregue pela Módulo2","caption":"Interior · perfumaria e presentes"}
+          ]'>
+          <img src="assets/img/photos/storefront-oboticario.png" alt="Fachada da loja O Boticário entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            3 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">O Boticário</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Mensageiro dos Sonhos"
+          data-name="Mensageiro dos Sonhos" data-meta="Loja de rua · moda infantil e pijamas"
+          data-photos='[
+            {"src":"assets/img/photos/storefront-mensageiro.jpg","alt":"Fachada da loja Mensageiro dos Sonhos entregue pela Módulo2","caption":"Fachada · loja de rua, moda infantil e pijamas"},
+            {"src":"assets/img/photos/interior-mensageiro-1.jpg","alt":"Interior da loja Mensageiro dos Sonhos entregue pela Módulo2","caption":"Interior · araras e vitrine"},
+            {"src":"assets/img/photos/interior-mensageiro-2.jpg","alt":"Interior da loja Mensageiro dos Sonhos com caixa entregue pela Módulo2","caption":"Interior · balcão e caixa"}
+          ]'>
+          <img src="assets/img/photos/storefront-mensageiro.jpg" alt="Fachada da loja Mensageiro dos Sonhos entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            3 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Mensageiro dos Sonhos</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Adcos"
+          data-name="Adcos" data-meta="Loja de shopping · dermocosméticos"
+          data-photos='[{"src":"assets/img/photos/storefront-adcos.png","alt":"Fachada da loja Adcos entregue pela Módulo2"}]'>
+          <img src="assets/img/photos/storefront-adcos.png" alt="Fachada da loja Adcos entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Adcos</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Sakae"
+          data-name="Sakae" data-meta="Loja de shopping · presentes e papelaria"
+          data-photos='[{"src":"assets/img/photos/storefront-sakae.png","alt":"Fachada da loja Sakae entregue pela Módulo2"}]'>
+          <img src="assets/img/photos/storefront-sakae.png" alt="Fachada da loja Sakae entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Sakae</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
       </figure>
     </div>
     <p class="obras__more reveal">Cada nova inauguração é registrada no nosso <a href="https://instagram.com/modulo.2" target="_blank" rel="noopener">Instagram</a>.</p>
@@ -411,6 +550,7 @@
   <figure class="lightbox__stage">
     <img id="lbImg" src="" alt="">
     <figcaption class="lightbox__cap" id="lbCap"></figcaption>
+    <span class="lightbox__count" id="lbCount" aria-hidden="true"></span>
   </figure>
   <button class="lightbox__nav lightbox__nav--next" id="lbNext" type="button" aria-label="Próxima obra">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -430,6 +570,26 @@
         a.addEventListener('click', function(){ m.classList.remove('open'); t.setAttribute('aria-expanded','false'); });
       });
     }
+  })();
+
+  // Tema claro/escuro
+  (function(){
+    var btn = document.getElementById('themeToggle');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (!btn) return;
+    var COLORS = { light: '#ccc0b6', dark: '#C2B7AD' };
+    function apply(theme){
+      document.documentElement.setAttribute('data-theme', theme);
+      btn.setAttribute('aria-label', theme === 'dark' ? 'Alternar para modo claro' : 'Alternar para modo escuro');
+      if (meta) meta.setAttribute('content', COLORS[theme]);
+    }
+    btn.addEventListener('click', function(){
+      var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem('m2-theme', next); } catch (e) {}
+    });
+    apply(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
   })();
 
 </script>
