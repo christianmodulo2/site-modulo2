@@ -15,32 +15,7 @@
   gsap.registerPlugin(ScrollTrigger);
   var EASE = 'power3.out';
 
-  /* ---------- 1. HERO — abertura orquestrada no load ---------- */
-  var heroTL = gsap.timeline({ defaults: { ease: EASE } });
-  // .fromTo com destino explícito (o CSS deixa estes elementos em opacity:0
-  // sob .anim, então .from os manteria invisíveis — o destino seria 0).
-  heroTL
-    .set('.hero__bg img', { scale: 1.16, transformOrigin: '50% 50%' })
-    .to('.hero__bg img', { scale: 1.04, duration: 2.6, ease: 'power2.out' }, 0)
-    .fromTo('.hero__pill', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .7, stagger: .1 }, 0.2)
-    .set('.hero h1', { opacity: 1 }, 0.3)
-    .fromTo('.hero h1',
-      { clipPath: 'inset(0 0 100% 0)', y: 26 },
-      { clipPath: 'inset(0 0 0% 0)', y: 0, duration: 1.1 }, 0.3)
-    .fromTo('.hero__lead', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .8 }, 0.75)
-    .fromTo('.hero__cta > *', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .7, stagger: .12 }, 0.9);
-
-  /* ---------- 2. HERO — parallax suave no scroll ---------- */
-  gsap.to('.hero__bg img', {
-    yPercent: 16, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-  });
-  gsap.to('.hero__copy', {
-    yPercent: -9, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-  });
-
-  /* ---------- 3. Header condensa ao rolar ---------- */
+  /* ---------- 1. Header condensa ao rolar ---------- */
   ScrollTrigger.create({
     start: 'top -64',
     toggleClass: { targets: '.header', className: 'header--scrolled' }

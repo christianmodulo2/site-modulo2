@@ -194,15 +194,18 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .sec { padding:clamp(4rem,8vw,8rem) 0; }
 .sec--muted { background:var(--surface-muted); }
 .sec--dark { background:var(--surface-inverse); color:#fff; }
-.sec--taupe { background:var(--m2-taupe); }
-.sec--clay { background:var(--m2-clay); }
-.sec--pastel { background:var(--m2-pastel); }
-.sec--taupe .sec-head__title, .sec--clay .sec-head__title { color:#fff; }
-.sec--taupe .sec-head__lead, .sec--clay .sec-head__lead { color:rgba(255,255,255,.80); }
-.sec--taupe .eyebrow, .sec--clay .eyebrow { color:var(--terracotta-200); }
-/* .sec--pastel keeps its light brand background in both themes, so its
-   direct text stays pinned to fixed (non-theme-swapped) dark tones —
-   only the .corp-card children inside it follow the theme normally. */
+.sec--taupe { background:var(--m2-pastel); }
+.sec--clay { background:var(--m2-pastel); }
+/* .sec--taupe/.sec--clay share the same light brand background in both
+   themes now, so their direct text stays pinned to fixed (non-theme-swapped)
+   dark tones — only card children inside follow the theme normally. */
+.sec--taupe .sec-head__title, .sec--clay .sec-head__title { color:var(--sand-900); }
+.sec--taupe .sec-head__lead, .sec--clay .sec-head__lead { color:var(--sand-700); }
+.sec--taupe .eyebrow, .sec--clay .eyebrow { color:var(--terracotta-600); }
+/* .sec--pastel (Corporativo) uses a fixed near-white bg (same as .sec's
+   default light-mode --bg) regardless of theme, matching the reference the
+   client sent (the "Por que a Módulo2" section's off-white look). */
+.sec--pastel { background:var(--sand-50); }
 .sec--pastel .sec-head__title { color:var(--sand-900); }
 .sec--pastel .sec-head__lead { color:var(--sand-700); }
 .sec--pastel .eyebrow { color:var(--terracotta-600); }
@@ -214,44 +217,71 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .sec--dark .sec-head__lead { color:rgba(255,255,255,.74); }
 .em { font-style:italic; font-weight:500; color:var(--text-accent); }
 
-/* ---------- Hero (full-bleed photo) ---------- */
-.hero { position:relative; overflow:hidden; display:flex; align-items:center;
-  min-height:clamp(580px,90vh,900px); background:var(--sand-900); }
-.hero__bg { position:absolute; inset:0; z-index:0; }
-.hero__bg img { width:100%; height:100%; object-fit:cover; object-position:50% 38%; }
+/* ---------- Hero (carrossel de fotos amarrado ao scroll) ----------
+   A seção fica alta (1 tela por foto) e o miolo é `sticky`: a página rola
+   de verdade, e as fotos trocam por clip-path conforme o scroll avança.
+   A seção seguinte só entra depois que a última foto termina de revelar,
+   ou seja, depois que o pin libera. */
+.hero { position:relative; width:100%; height:calc(var(--hero-slides,4) * 100vh); }
+.hero__pin { position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+.hero__bg { position:absolute; inset:0; z-index:0; isolation:isolate; }
+.hero__slide { position:absolute; inset:0; clip-path:inset(100% 0 0 0); will-change:clip-path; }
+.hero__slide:first-child { clip-path:inset(0 0 0 0); }
+.hero__slide-inner { position:absolute; top:0; left:0; width:100%; height:calc(100% + 180px); will-change:transform; }
+.hero__slide img { width:100%; height:100%; object-fit:cover; display:block; }
 .hero__scrim {
-  position:absolute; inset:0; z-index:1;
-  background:
-    linear-gradient(96deg, rgba(26,20,16,.90) 0%, rgba(26,20,16,.72) 36%, rgba(26,20,16,.34) 70%, rgba(26,20,16,.10) 100%),
-    linear-gradient(0deg, rgba(26,20,16,.55) 0%, rgba(26,20,16,0) 40%);
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(100deg, rgba(34,26,22,.72) 0%, rgba(34,26,22,.46) 52%, rgba(34,26,22,.32) 100%);
 }
-.hero__inner { position:relative; z-index:2; width:100%; padding-block:clamp(5rem,11vh,7.5rem); }
-.hero__copy { max-width:46rem; }
-.hero__pills { display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:2rem; }
+.hero__content { position:absolute; top:45%; left:0; right:0; z-index:2; }
+.hero__nav { display:flex; align-items:center; gap:1.25rem; max-width:1080px; }
+.hero__index { font-size:.8125rem; font-weight:500; letter-spacing:.08em; font-variant-numeric:tabular-nums; color:rgba(255,255,255,.85); flex:none; font-family:var(--font-sans); }
+.hero__track { position:relative; flex:1; height:1px; background:rgba(255,255,255,.3); }
 .hero__pill {
-  display:inline-flex; align-items:center; gap:.55rem;
-  padding:.6rem 1.05rem; border-radius:var(--radius-pill);
-  background:rgba(26,20,16,.40); border:1px solid rgba(255,255,255,.24);
-  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
-  font-family:var(--font-sans); font-size:.875rem; font-weight:500; color:#fff;
+  --pill-w:11.5rem;
+  position:absolute; top:50%; left:0; width:var(--pill-w); height:2.25rem; margin-top:-1.125rem;
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  border-radius:var(--radius-pill); background:var(--sand-400); color:var(--sand-900);
+  font-family:var(--font-sans); font-size:.8125rem; font-weight:600; letter-spacing:.01em; white-space:nowrap;
+  will-change:transform;
 }
-.hero__pill svg { width:16px; height:16px; color:var(--terracotta-200); flex:0 0 auto; }
-.hero h1 {
-  font-size:clamp(3rem, 1rem + 6.6vw, 6rem); line-height:1.01; letter-spacing:-0.03em;
-  color:#fff; margin:0 0 1.6rem; text-wrap:balance; text-shadow:0 1px 36px rgba(0,0,0,.3);
+.hero__pill svg { width:14px; height:14px; flex:none; }
+.hero__pill span { transition:opacity .25s ease; }
+.hero__pill.is-swapping span { opacity:0; }
+.hero__text { margin-top:2.5rem; }
+.hero__title {
+  margin:0; max-width:15ch; font-family:var(--font-display);
+  font-size:clamp(2.25rem,min(6.2vw,8.6vh),5rem); line-height:1.06; font-weight:700;
+  letter-spacing:-.01em; text-wrap:balance; color:#fff;
 }
-.hero h1 em { display:block; font-style:italic; font-weight:500; color:var(--m2-pastel); }
-.hero__lead { font-size:clamp(1.05rem, .95rem + .5vw, 1.3rem); line-height:1.6;
-  color:var(--m2-pastel); max-width:34em; margin:0 0 2rem; }
-.hero__cta { display:flex; gap:.9rem; flex-wrap:wrap; align-items:center; }
-.hero__note { display:flex; align-items:center; gap:.6rem; margin-top:1.7rem; font-size:.92rem; color:rgba(255,255,255,.82); }
-.hero__note svg { width:18px; height:18px; color:var(--terracotta-300); flex:0 0 auto; }
+.hero__title em { font-style:normal; color:var(--sand-400); }
+.hero__reveal { display:block; overflow:hidden; }
+.hero__reveal > * { display:block; padding-bottom:.14em; margin-bottom:-.14em; animation:heroRise .85s var(--ease-out) both; }
+@keyframes heroRise { from { transform:translateY(105%); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.hero__cta { margin-top:2.25rem; display:flex; flex-wrap:wrap; gap:1rem; animation:heroFadeUp .8s var(--ease-out) .22s both; }
+@keyframes heroFadeUp { from { transform:translateY(14px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.hero__scroll {
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:2;
+  display:flex; align-items:center; gap:.5rem; font-size:.75rem; font-weight:400; letter-spacing:.06em;
+  color:rgba(255,255,255,.9); transition:opacity .5s ease;
+}
+.hero__scroll svg { width:14px; height:14px; animation:heroBounce 1.8s ease-in-out infinite; }
+@keyframes heroBounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(5px); } }
+.hero.is-last .hero__scroll { opacity:0; }
+@media (max-height:760px){
+  .hero__content { top:36%; }
+  .hero__text { margin-top:1.75rem; }
+  .hero__cta { margin-top:1.5rem; }
+}
 @media (max-width:760px){
-  .hero { min-height:auto; }
-  .hero__bg img { object-position:50% 30%; }
-  .hero__scrim { background:
-    linear-gradient(180deg, rgba(26,20,16,.55) 0%, rgba(26,20,16,.78) 100%),
-    linear-gradient(96deg, rgba(26,20,16,.6) 0%, rgba(26,20,16,.3) 100%); }
+  .hero__content { top:auto; bottom:6.5rem; }
+  .hero__text { max-width:none; margin-top:2rem; }
+  .hero__index { display:none; }
+  .hero__pill { --pill-w:10rem; font-size:.75rem; }
+  .hero__cta { margin-top:1.75rem; }
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__reveal > *, .hero__cta, .hero__scroll svg { animation:none !important; }
 }
 
 /* ---------- Clients / prova social (esteira infinita) ---------- */
@@ -278,8 +308,24 @@ button { font:inherit; color:inherit; cursor:pointer; }
   opacity:.82; transition:opacity var(--dur-fast) var(--ease-out);
 }
 .clients__marquee:hover .clients__logo img { opacity:1; }
+/* Derma Clinique é uma assinatura cursiva fina — na mesma altura das outras
+   logos ela fica ilegível, então recebe uma altura maior só para ela. */
+.clients__logo--lg img { height:88px; max-width:290px; }
 @keyframes clientsScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-@media (max-width:520px){ .clients__logo { padding:0 1.4rem; } .clients__logo img{ height:32px; max-width:110px; } }
+
+/* Variante da esteira de marcas corporativas: pertence visualmente à seção
+   Corporativo logo acima (mesmo fundo quase-branco fixo, --sand-50), então
+   fica separada visualmente do CTA final escuro que vem depois. Logos em
+   tom terroso escuro, igual à esteira principal. */
+.clients--corp { background:var(--sand-50); border-bottom:none; }
+.clients--corp .clients__label { color:var(--sand-700); }
+.clients--corp .clients__label b { color:var(--sand-900); }
+.clients--corp .clients__logo img {
+  filter:grayscale(1) brightness(.45) sepia(.4) saturate(2.4) hue-rotate(-8deg);
+  opacity:.82;
+}
+.clients--corp .clients__marquee:hover .clients__logo img { opacity:1; }
+@media (max-width:520px){ .clients__logo { padding:0 1.4rem; } .clients__logo img{ height:32px; max-width:110px; } .clients__logo--lg img { height:60px; max-width:210px; } }
 
 /* ---------- Riscos ---------- */
 .risks { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
@@ -393,9 +439,9 @@ button { font:inherit; color:inherit; cursor:pointer; }
   font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
   color:#fff; background:var(--accent); padding:.5rem .85rem; border-radius:var(--radius-pill);
 }
-.obras__more { margin-top:2.4rem; text-align:center; font-size:1rem; color:rgba(255,255,255,.82); }
-.obras__more a { color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:.18em; }
-.obras__more a:hover { color:var(--terracotta-100); }
+.obras__more { margin-top:2.4rem; text-align:center; font-size:1rem; color:var(--sand-700); }
+.obras__more a { color:var(--sand-900); font-weight:600; text-decoration:underline; text-underline-offset:.18em; }
+.obras__more a:hover { color:var(--terracotta-600); }
 @media (max-width:900px){ .obras { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:560px){ .obras { grid-template-columns:1fr; } }
 /* Sem hover (touch): mantém o nome/segmento visíveis por padrão, já que
@@ -446,7 +492,10 @@ button { font:inherit; color:inherit; cursor:pointer; }
 }
 
 /* ---------- Corporativo ---------- */
-.corp { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+.corp-layout { display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(2rem,5vw,4.5rem); align-items:start; }
+.corp-layout__media { border-radius:var(--radius-xl); overflow:hidden; aspect-ratio:3/4; box-shadow:var(--shadow-lg); background:var(--sand-200); }
+.corp-layout__media img { width:100%; height:100%; object-fit:cover; }
+.corp { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; margin-top:2.5rem; }
 .corp-card {
   background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-lg);
   padding:1.8rem 1.5rem 2rem;
@@ -458,11 +507,11 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .corp-card__ico svg { width:23px; height:23px; }
 .corp-card h3 { font-size:1.28rem; letter-spacing:-0.015em; margin:0 0 .55rem; }
 .corp-card p { font-size:.93rem; line-height:1.55; color:var(--text-secondary); }
-@media (max-width:980px){ .corp { grid-template-columns:1fr 1fr; } }
-@media (max-width:520px){ .corp { grid-template-columns:1fr; } }
+@media (max-width:860px){ .corp-layout { grid-template-columns:1fr; } .corp-layout__media { aspect-ratio:16/10; order:-1; } }
+@media (max-width:560px){ .corp { grid-template-columns:1fr; } }
 
 /* ---------- CTA final ---------- */
-.final { background:var(--surface-clay); color:#fff; }
+.final { background:var(--surface-inverse); color:#fff; }
 .final__inner { text-align:center; max-width:46rem; margin-inline:auto; padding:clamp(3.5rem,7vw,6rem) 0; }
 .final .eyebrow { color:var(--terracotta-200); justify-content:center; display:flex; margin-bottom:1.2rem; }
 .final h2 { color:#fff; font-size:clamp(2rem, 1.3rem + 2.6vw, 3.2rem); letter-spacing:-0.022em; margin:0 0 1.7rem; text-wrap:balance; }
@@ -470,7 +519,7 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .final__sub { margin-top:1.5rem; font-size:.92rem; color:rgba(255,255,255,.7); }
 
 /* ---------- Footer ---------- */
-.footer { background:var(--m2-clay); color:#fff; padding:clamp(3rem,5vw,4.5rem) 0 1.8rem; }
+.footer { background:var(--surface-inverse); color:#fff; padding:clamp(3rem,5vw,4.5rem) 0 1.8rem; }
 .footer__top { display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap:2rem; padding-bottom:2.4rem; border-bottom:1px solid rgba(255,255,255,.16); }
 .footer__brand img { height:42px; width:auto; margin-bottom:1.1rem; }
 .footer__brand p { font-size:.9rem; line-height:1.6; color:rgba(255,255,255,.72); max-width:24em; }
@@ -490,11 +539,6 @@ button { font:inherit; color:inherit; cursor:pointer; }
    <html> only when the JS animation layer is active, so nothing flashes. */
 .reveal { opacity:1; }
 .anim .reveal { opacity:0; }
-.anim .hero__pill,
-.anim .hero h1,
-.anim .hero__lead,
-.anim .hero__cta > * { opacity:0; }
-.anim .hero__bg img { will-change:transform; }
 .step__dot { transform-origin:center; }
 .step__bar { transform-origin:left center; }
 

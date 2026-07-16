@@ -6,6 +6,7 @@
 <title>Módulo2 Obras Comerciais · Sua loja aberta e faturando no dia marcado</title>
 <meta name="description" content="30 anos construindo lojas de varejo em shoppings, lojas de rua e obras corporativas. Fidelidade total ao projeto, prazo do shopping cumprido, chave na mão. Atendemos SC e PR.">
 <link rel="preconnect" href="">
+<link rel="preload" href="assets/img/hero/hero-boticario.png" as="image" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="print.css" media="print">
 <meta property="og:title" content="Módulo2 · Obras Comerciais">
@@ -82,38 +83,81 @@
 <main id="topo">
 
 <!-- ===================== HERO ===================== -->
-<section class="hero">
-  <div class="hero__bg">
-    <img src="assets/img/photos/hero-anacapri.png" alt="Loja AnaCapri entregue pela Módulo2" loading="eager" fetchpriority="high">
-  </div>
-  <div class="hero__scrim" aria-hidden="true"></div>
-  <div class="wrap hero__inner">
-    <div class="hero__copy">
-      <div class="hero__pills">
-        <span class="hero__pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg>
-          +200 lojas entregues
-        </span>
-        <span class="hero__pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          30+ anos de experiência
-        </span>
-        <span class="hero__pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Inaugurações sempre no prazo
-        </span>
+<section class="hero" id="hero" aria-roledescription="carrossel" aria-label="Obras entregues pela Módulo2">
+ <div class="hero__pin">
+
+  <div class="hero__bg" id="heroBg">
+    <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="1 de 4">
+      <div class="hero__slide-inner">
+        <img src="assets/img/hero/hero-boticario.png" alt="Fachada da loja O Boticário executada pela Módulo2" fetchpriority="high">
       </div>
-      <h1>Especialistas em Implantação <em>Comercial.</em></h1>
-      <p class="hero__lead">Há mais de 30 anos no mercado executando lojas de shopping, lojas de rua e obras corporativas.</p>
-      <div class="hero__cta">
-        <a href="https://wa.me/5547999639566" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Fale com um arquiteto</a>
-        <a href="#obras" class="btn btn--ghost-light btn--lg">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+    <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="2 de 4">
+      <div class="hero__slide-inner">
+        <img src="assets/img/hero/hero-havaianas.jpeg" alt="Fachada da loja Havaianas executada pela Módulo2" loading="lazy">
+      </div>
+    </div>
+    <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="3 de 4">
+      <div class="hero__slide-inner">
+        <img src="assets/img/hero/hero-cia-maritima.jpeg" alt="Fachada da loja Cia Marítima executada pela Módulo2" loading="lazy">
+      </div>
+    </div>
+    <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="4 de 4">
+      <div class="hero__slide-inner">
+        <img src="assets/img/hero/hero-anacapri.png" alt="Interior da loja AnaCapri executada pela Módulo2" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="wrap hero__content">
+
+    <!-- Navegação: trilho + pill deslizante -->
+    <div class="hero__nav">
+      <span class="hero__index" id="heroIndex" aria-hidden="true">01</span>
+      <div class="hero__track">
+        <div class="hero__pill" id="heroPill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9.5 4.6 4.5h14.8L21 9.5"/>
+            <path d="M4 9.5v10h16v-10"/>
+            <path d="M3 9.5a2.4 2.4 0 0 0 4.5 0 2.4 2.4 0 0 0 4.5 0 2.4 2.4 0 0 0 4.5 0 2.4 2.4 0 0 0 4.5 0"/>
+            <path d="M9.5 19.5v-5h5v5"/>
+          </svg>
+          <span id="heroPillLabel">O Boticário</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__text">
+      <div class="hero__reveal" id="heroRevealTitle">
+        <h1 class="hero__title" id="heroTitle">Especialistas em Implantação <em>Comercial.</em></h1>
+      </div>
+      <div class="hero__cta" id="heroRevealCta">
+        <a class="btn btn--primary btn--lg" href="https://wa.me/5547999639566" target="_blank" rel="noopener">
+          Fale com um arquiteto
+        </a>
+        <a class="btn btn--ghost-light btn--lg" href="#obras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
           Ver Portfólio
         </a>
       </div>
     </div>
+
   </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    Scroll para Explorar
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+
+  <p class="sr-only" aria-live="polite" id="heroLive" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"></p>
+
+ </div>
 </section>
 
 <!-- ===================== PROVA SOCIAL ===================== -->
@@ -445,6 +489,61 @@
           </span>
         </button>
       </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Purpurata"
+          data-name="Purpurata" data-meta="Loja de shopping"
+          data-photos='[
+            {"src":"assets/img/photos/obras/Purpurata/purpurata-fachada.jpg","alt":"Fachada da loja Purpurata entregue pela Módulo2","caption":"Fachada · loja de shopping"},
+            {"src":"assets/img/photos/obras/Purpurata/purpurata-interior.jpg","alt":"Interior da loja Purpurata entregue pela Módulo2","caption":"Interior · acabamento e vitrine"},
+            {"src":"assets/img/photos/obras/Purpurata/purpurata-interior2.jpg","alt":"Interior da loja Purpurata com identidade visual entregue pela Módulo2","caption":"Interior · identidade da marca"}
+          ]'>
+          <img src="assets/img/photos/obras/Purpurata/purpurata-fachada.jpg" alt="Fachada da loja Purpurata entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            3 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Purpurata</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja Melissa"
+          data-name="Melissa" data-meta="Loja de shopping · calçados"
+          data-photos='[{"src":"assets/img/photos/obras/Melissa/fachada-Melissa.jpg","alt":"Fachada da loja Melissa entregue pela Módulo2"}]'>
+          <img src="assets/img/photos/obras/Melissa/fachada-Melissa.jpg" alt="Fachada da loja Melissa entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">Melissa</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
+      <figure class="obra reveal">
+        <button class="obra__img" type="button" aria-label="Ver projeto da loja O Boticário (rua)"
+          data-name="O Boticário" data-meta="Loja de rua · perfumaria e cosméticos"
+          data-photos='[
+            {"src":"assets/img/photos/obras/O_Boticario(rua)/boticario-fachada.png","alt":"Fachada da loja O Boticário entregue pela Módulo2","caption":"Fachada · loja de rua, perfumaria e cosméticos"},
+            {"src":"assets/img/photos/obras/O_Boticario(rua)/boticario1.jpeg","alt":"Interior da loja O Boticário entregue pela Módulo2","caption":"Interior · prateleiras e acabamento"},
+            {"src":"assets/img/photos/obras/O_Boticario(rua)/boticario2.jpeg","alt":"Interior da loja O Boticário entregue pela Módulo2","caption":"Interior · área de vendas"},
+            {"src":"assets/img/photos/obras/O_Boticario(rua)/boticario3.jpeg","alt":"Interior da loja O Boticário entregue pela Módulo2","caption":"Interior · vitrine e iluminação"},
+            {"src":"assets/img/photos/obras/O_Boticario(rua)/boticario4.jpeg","alt":"Interior da loja O Boticário entregue pela Módulo2","caption":"Interior · caixa e acabamento"},
+            {"src":"assets/img/photos/obras/O_Boticario(rua)/boticario5.jpeg","alt":"Interior da loja O Boticário entregue pela Módulo2","caption":"Interior · detalhe da identidade visual"}
+          ]'>
+          <img src="assets/img/photos/obras/O_Boticario(rua)/boticario-fachada.png" alt="Fachada da loja O Boticário entregue pela Módulo2" loading="lazy">
+          <span class="obra__scrim" aria-hidden="true"></span>
+          <span class="obra__count" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg>
+            6 fotos
+          </span>
+          <span class="obra__info" aria-hidden="true">
+            <span class="obra__info-name">O Boticário</span>
+            <span class="obra__cta">Ver projeto</span>
+          </span>
+        </button>
+      </figure>
     </div>
     <p class="obras__more reveal">Cada nova inauguração é registrada no nosso <a href="https://instagram.com/modulo.2" target="_blank" rel="noopener">Instagram</a>.</p>
   </div>
@@ -453,31 +552,69 @@
 <!-- ===================== ALÉM DO VAREJO ===================== -->
 <section class="sec sec--pastel" id="corporativo">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-head__title">A mesma exigência, agora no corporativo.</h2>
-      <p class="sec-head__lead">A experiência de execução de alta exigência do varejo premium se aplica a escritórios, recepções e espaços de atendimento que pedem acabamento preciso e prazo cumprido.</p>
+    <div class="corp-layout">
+      <div class="corp-layout__copy">
+        <div class="sec-head reveal">
+          <h2 class="sec-head__title">A mesma exigência, agora no corporativo.</h2>
+          <p class="sec-head__lead">A experiência de execução de alta exigência do varejo premium se aplica a escritórios, recepções e espaços de atendimento que pedem acabamento preciso e prazo cumprido.</p>
+        </div>
+        <div class="corp">
+          <article class="corp-card reveal">
+            <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></div>
+            <h3>Escritórios</h3>
+            <p>Salas executivas e espaços de trabalho com acabamento comercial.</p>
+          </article>
+          <article class="corp-card reveal">
+            <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 13v.01M9 17v.01"/></svg></div>
+            <h3>Recepções</h3>
+            <p>Ambientes de atendimento e entrada corporativa de alto padrão.</p>
+          </article>
+          <article class="corp-card reveal">
+            <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 11a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7Z"/><path d="M3 9 6 3h12l3 6"/><path d="M9 13a3 3 0 0 0 6 0"/></svg></div>
+            <h3>Espaços de negócio</h3>
+            <p>Franquias de serviços e pontos de venda especializados.</p>
+          </article>
+          <article class="corp-card reveal">
+            <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg></div>
+            <h3>Retrofit comercial</h3>
+            <p>Atualização e reforma de ambientes existentes com o mínimo de interrupção.</p>
+          </article>
+        </div>
+      </div>
+      <div class="corp-layout__media reveal">
+        <img src="assets/img/fotos-corporativo/sala-reuniao-Uniodonto.JPG" alt="Sala de reunião corporativa da Uniodonto entregue pela Módulo2">
+      </div>
     </div>
-    <div class="corp">
-      <article class="corp-card reveal">
-        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></div>
-        <h3>Escritórios</h3>
-        <p>Salas executivas e espaços de trabalho com acabamento comercial.</p>
-      </article>
-      <article class="corp-card reveal">
-        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 13v.01M9 17v.01"/></svg></div>
-        <h3>Recepções</h3>
-        <p>Ambientes de atendimento e entrada corporativa de alto padrão.</p>
-      </article>
-      <article class="corp-card reveal">
-        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 11a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7Z"/><path d="M3 9 6 3h12l3 6"/><path d="M9 13a3 3 0 0 0 6 0"/></svg></div>
-        <h3>Espaços de negócio</h3>
-        <p>Franquias de serviços e pontos de venda especializados.</p>
-      </article>
-      <article class="corp-card reveal">
-        <div class="corp-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg></div>
-        <h3>Retrofit comercial</h3>
-        <p>Atualização e reforma de ambientes existentes com o mínimo de interrupção.</p>
-      </article>
+  </div>
+</section>
+
+<!-- ===================== MARCAS CORPORATIVAS ===================== -->
+<section class="clients clients--corp sec--tight">
+  <div class="wrap">
+    <p class="clients__label"><b>Também construímos para o setor corporativo.</b> Marcas que confiam na Módulo2 para seus espaços de trabalho.</p>
+  </div>
+  <div class="clients__marquee">
+    <div class="clients__track">
+      <div class="clients__set">
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/log-jchicatto.png" alt="J.Chicatto"></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/uniodonto-branca.png" alt="Uniodonto Itajaí"></span>
+        <span class="clients__logo clients__logo--lg"><img src="assets/img/logos-corporativos/log-derma_clinique.png" alt="Derma Clinique"></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/Thabrulai.png" alt="Thabrulai"></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/log-jchicatto.png" alt="J.Chicatto"></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/uniodonto-branca.png" alt="Uniodonto Itajaí"></span>
+        <span class="clients__logo clients__logo--lg"><img src="assets/img/logos-corporativos/log-derma_clinique.png" alt="Derma Clinique"></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/Thabrulai.png" alt="Thabrulai"></span>
+      </div>
+      <div class="clients__set" aria-hidden="true">
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/log-jchicatto.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/uniodonto-branca.png" alt=""></span>
+        <span class="clients__logo clients__logo--lg"><img src="assets/img/logos-corporativos/log-derma_clinique.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/Thabrulai.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/log-jchicatto.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/uniodonto-branca.png" alt=""></span>
+        <span class="clients__logo clients__logo--lg"><img src="assets/img/logos-corporativos/log-derma_clinique.png" alt=""></span>
+        <span class="clients__logo"><img src="assets/img/logos-corporativos/Thabrulai.png" alt=""></span>
+      </div>
     </div>
   </div>
 </section>
@@ -590,6 +727,112 @@
       try { localStorage.setItem('m2-theme', next); } catch (e) {}
     });
     apply(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  })();
+
+  // Hero — carrossel de fotos amarrado ao scroll (pin + clip-path + parallax).
+  // Tudo aqui é função pura da posição de rolagem, recalculada a cada frame:
+  // é isso que faz a foto acompanhar o scroll em vez de disparar sozinha ao
+  // cruzar um limiar. A seção seguinte só aparece depois que o pin libera,
+  // ou seja, depois que a última foto termina de revelar.
+  (function () {
+    var SLIDES = [
+      { label: 'O Boticário', title: 'Especialistas em Implantação <em>Comercial.</em>' },
+      { label: 'Havaianas',   title: 'Sua loja inaugurada no <em>prazo combinado.</em>' },
+      { label: 'Cia Marítima', title: 'Fidelidade total às especificações do <em>Projeto.</em>' },
+      { label: 'AnaCapri',    title: 'Do ponto vazio ao <em>pós-obra.</em>' }
+    ];
+
+    var hero   = document.getElementById('hero');
+    if (!hero) return;
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.hero__slide'));
+    var pill   = document.getElementById('heroPill');
+    var label  = document.getElementById('heroPillLabel');
+    var index  = document.getElementById('heroIndex');
+    var live   = document.getElementById('heroLive');
+    var track  = document.querySelector('.hero__track');
+    var title  = document.getElementById('heroTitle');
+
+    var reveals = [
+      document.getElementById('heroRevealTitle'),
+      document.getElementById('heroRevealCta')
+    ];
+
+    var n = slides.length;
+    var current = -1;
+    var inners = slides.map(function (s) { return s.querySelector('.hero__slide-inner'); });
+
+    var PARALLAX = 180; // deriva da foto, em px
+
+    document.documentElement.style.setProperty('--hero-slides', n);
+
+    function replayText() {
+      reveals.forEach(function (el) {
+        var target = el.id === 'heroRevealCta' ? el : el.firstElementChild;
+        target.style.animation = 'none';
+        void target.offsetWidth;
+        target.style.animation = '';
+      });
+    }
+
+    function movePill(g) {
+      var free = track.clientWidth - pill.offsetWidth;
+      pill.style.transform = 'translateX(' + (g / (n - 1)) * free + 'px)';
+    }
+
+    function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+
+    function setLabels(i) {
+      if (i === current) return;
+      current = i;
+
+      pill.classList.add('is-swapping');
+      setTimeout(function () {
+        label.textContent = SLIDES[i].label;
+        pill.classList.remove('is-swapping');
+      }, 160);
+
+      title.innerHTML = SLIDES[i].title;
+      index.textContent = String(i + 1).padStart(2, '0');
+      live.textContent = 'Slide ' + (i + 1) + ' de ' + n + ': ' + SLIDES[i].label;
+      hero.classList.toggle('is-last', i === n - 1);
+
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      replayText();
+    }
+
+    function render() {
+      var range = hero.offsetHeight - window.innerHeight;
+      if (range <= 0) return;
+
+      var p = clamp(-hero.getBoundingClientRect().top / range, 0, 1);
+      var g = p * (n - 1);
+
+      for (var k = 0; k < n; k++) {
+        var reveal = clamp(g - (k - 1), 0, 1);
+        slides[k].style.clipPath = k === 0
+          ? 'inset(0 0 0 0)'
+          : 'inset(' + ((1 - reveal) * 100).toFixed(3) + '% 0 0 0)';
+
+        var drift = clamp(g - k, -1, 1) * -PARALLAX;
+        inners[k].style.transform = 'translate3d(0,' + drift.toFixed(2) + 'px,0)';
+      }
+
+      movePill(g);
+      setLabels(clamp(Math.round(g), 0, n - 1));
+    }
+
+    var lastP = -1;
+    (function loop() {
+      var p = window.scrollY;
+      if (p !== lastP) { lastP = p; render(); }
+      requestAnimationFrame(loop);
+    })();
+
+    window.addEventListener('resize', function () { render(); });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { render(); });
+    }
+    render();
   })();
 
 </script>
