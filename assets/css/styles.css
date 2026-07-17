@@ -23,8 +23,6 @@
   /* Sand scale */
   --sand-50:#faf8f6; --sand-100:#f4efea; --sand-200:#ebe3db; --sand-300:#ddd0c5; --sand-400:#ccc0b6;
   --sand-500:#ab9485; --sand-600:#82685b; --sand-700:#6b554b; --sand-800:#4d3e37; --sand-900:#322823; --sand-950:#211a16;
-  /* Mocha scale (soft/dim theme palette) */
-  --mocha-100:#E4E2DD; --mocha-200:#D5CDC5; --mocha-300:#C2B7AD; --mocha-400:#9C8B7B;
   /* Terracotta scale */
   --terracotta-50:#fbf1ec; --terracotta-100:#f3d9cb; --terracotta-200:#e6b59c; --terracotta-300:#d68a64;
   --terracotta-400:#bd5e32; --terracotta-500:#a3420f; --terracotta-600:#8c310a; --terracotta-700:#722709; --terracotta-800:#561d08;
@@ -51,6 +49,7 @@
   --shadow-lg:0 14px 38px rgba(50,40,35,.12),0 4px 10px rgba(50,40,35,.06);
   --shadow-xl:0 30px 70px rgba(40,30,26,.18);
   /* Layout / motion */
+  --header-h:94px;
   --container:1240px;
   --gutter:clamp(1.25rem,4vw,3.5rem);
   --ease-out:cubic-bezier(.22,.61,.36,1);
@@ -60,27 +59,6 @@
      o "dark mode forçado" do Chrome/Android (heurística que reescreve cores
      de páginas sem esse hint) não brigue com o nosso toggle no celular. */
   color-scheme:light;
-}
-
-/* ---------- Dark theme (opt-in via [data-theme] on <html>) ----------
-   Brand-fixed sections (hero, taupe/clay/pastel blocks, footer, lightbox)
-   already carry their own dark backgrounds + hardcoded white text and are
-   intentionally left untouched here. This block only re-maps the neutral
-   semantic tokens that light-mode surfaces (cards, header, body) read from.
-   Uses the client's requested mocha palette: since none of those swatches
-   are actually dark, this reads as a soft/dim theme (warm mocha canvas,
-   light cream cards, dark brown text) rather than a black-based dark UI. */
-:root[data-theme="dark"] {
-  --bg:var(--mocha-300);
-  --surface:var(--mocha-100);
-  --surface-muted:var(--mocha-200);
-  --text-primary:var(--sand-900);
-  --text-secondary:var(--sand-700);
-  --text-muted:var(--sand-600);
-  --border-subtle:var(--mocha-200);
-  --border:var(--mocha-300);
-  --border-strong:var(--mocha-400);
-  color-scheme:dark;
 }
 
 /* ---------- Base ---------- */
@@ -142,7 +120,7 @@ button { font:inherit; color:inherit; cursor:pointer; }
   backdrop-filter:saturate(1.3) blur(14px);
   border-bottom:1px solid var(--border-subtle);
 }
-.header__inner { display:flex; align-items:center; justify-content:space-between; height:94px; gap:1.5rem; }
+.header__inner { display:flex; align-items:center; justify-content:space-between; height:var(--header-h); gap:1.5rem; }
 .header__logo img { height:60px; width:auto; }
 .nav { display:flex; align-items:center; gap:2rem; }
 .nav a {
@@ -154,24 +132,6 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .header__ig { display:flex; align-items:center; justify-content:center; color:var(--text-brand); transition:color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
 .header__ig svg { width:34px; height:34px; }
 .header__ig:hover { color:var(--text-accent); transform:scale(1.1); }
-
-/* Theme toggle: sun/moon cross-fade, matches the icon-button family */
-.theme-toggle {
-  position:relative; width:40px; height:40px; border-radius:var(--radius-pill); flex:0 0 auto;
-  border:1px solid var(--border); background:var(--surface); color:var(--text-brand);
-  display:grid; place-items:center; overflow:hidden;
-  transition:color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
-}
-.theme-toggle:hover { color:var(--text-accent); border-color:var(--border-strong); }
-.theme-toggle:active { transform:scale(.92); }
-.theme-toggle__icon {
-  position:absolute; width:19px; height:19px;
-  transition:opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
-}
-.theme-toggle__icon--moon { opacity:0; transform:rotate(-45deg) scale(.55); }
-:root[data-theme="dark"] .theme-toggle__icon--sun { opacity:0; transform:rotate(45deg) scale(.55); }
-:root[data-theme="dark"] .theme-toggle__icon--moon { opacity:1; transform:none; }
-@media (prefers-reduced-motion:reduce){ .theme-toggle__icon { transition:none; } }
 
 .nav-toggle { display:none; width:42px; height:42px; border:1px solid var(--border); border-radius:var(--radius-md);
   background:var(--surface); align-items:center; justify-content:center; }
@@ -223,7 +183,11 @@ button { font:inherit; color:inherit; cursor:pointer; }
    A seção seguinte só entra depois que a última foto termina de revelar,
    ou seja, depois que o pin libera. */
 .hero { position:relative; width:100%; height:calc(var(--hero-slides,4) * 100vh); }
-.hero__pin { position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+/* O pin gruda logo abaixo do header (que também é sticky e fica por cima,
+   z-index 60) em vez de tentar ocupar 100vh cheio — senão, no repouso
+   (scroll 0), antes do pin realmente "grudar", a fatia de baixo do miolo
+   (o CTA, ancorado por `bottom`) fica escondida atrás da dobra da tela. */
+.hero__pin { position:sticky; top:var(--header-h); height:calc(100vh - var(--header-h)); height:calc(100svh - var(--header-h)); overflow:hidden; }
 .hero__bg { position:absolute; inset:0; z-index:0; isolation:isolate; }
 .hero__slide { position:absolute; inset:0; clip-path:inset(100% 0 0 0); will-change:clip-path; }
 .hero__slide:first-child { clip-path:inset(0 0 0 0); }
@@ -233,33 +197,24 @@ button { font:inherit; color:inherit; cursor:pointer; }
   position:absolute; inset:0; z-index:1; pointer-events:none;
   background:linear-gradient(100deg, rgba(34,26,22,.72) 0%, rgba(34,26,22,.46) 52%, rgba(34,26,22,.32) 100%);
 }
-.hero__content { position:absolute; top:45%; left:0; right:0; z-index:2; }
-.hero__nav { display:flex; align-items:center; gap:1.25rem; max-width:1080px; }
-.hero__index { font-size:.8125rem; font-weight:500; letter-spacing:.08em; font-variant-numeric:tabular-nums; color:rgba(255,255,255,.85); flex:none; font-family:var(--font-sans); }
-.hero__track { position:relative; flex:1; height:1px; background:rgba(255,255,255,.3); }
-.hero__pill {
-  --pill-w:11.5rem;
-  position:absolute; top:50%; left:0; width:var(--pill-w); height:2.25rem; margin-top:-1.125rem;
-  display:flex; align-items:center; justify-content:center; gap:.5rem;
-  border-radius:var(--radius-pill); background:var(--sand-400); color:var(--sand-900);
-  font-family:var(--font-sans); font-size:.8125rem; font-weight:600; letter-spacing:.01em; white-space:nowrap;
-  will-change:transform;
-}
-.hero__pill svg { width:14px; height:14px; flex:none; }
-.hero__pill span { transition:opacity .25s ease; }
-.hero__pill.is-swapping span { opacity:0; }
-.hero__text { margin-top:2.5rem; }
+/* Conteúdo ancorado embaixo (não mais centralizado por %) em todas as
+   telas: fica sempre a uma distância fixa do rodapé do pin, então o botão
+   de CTA cai sempre no mesmo lugar visual, com ou sem cabeçalho/rodapé
+   de tamanhos diferentes. */
+.hero__content { position:absolute; left:0; right:0; bottom:3.5rem; z-index:2; }
+.hero__text { margin-top:0; }
 .hero__title {
   margin:0; max-width:15ch; font-family:var(--font-display);
-  font-size:clamp(2.25rem,min(6.2vw,8.6vh),5rem); line-height:1.06; font-weight:700;
+  font-size:clamp(1.35rem,min(3.72vw,5.16vh),3rem); line-height:1.06; font-weight:700;
   letter-spacing:-.01em; text-wrap:balance; color:#fff;
 }
 .hero__title em { font-style:normal; color:var(--sand-400); }
 .hero__reveal { display:block; overflow:hidden; }
 .hero__reveal > * { display:block; padding-bottom:.14em; margin-bottom:-.14em; animation:heroRise .85s var(--ease-out) both; }
 @keyframes heroRise { from { transform:translateY(105%); opacity:0; } to { transform:translateY(0); opacity:1; } }
-.hero__cta { margin-top:2.25rem; display:flex; flex-wrap:wrap; gap:1rem; animation:heroFadeUp .8s var(--ease-out) .22s both; }
+.hero__cta { margin-top:1rem; display:flex; flex-wrap:wrap; gap:1rem; animation:heroFadeUp .8s var(--ease-out) .22s both; }
 @keyframes heroFadeUp { from { transform:translateY(14px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.hero__cta .btn--primary { padding:.7rem 1.3rem; font-size:.85rem; }
 .hero__scroll {
   position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:2;
   display:flex; align-items:center; gap:.5rem; font-size:.75rem; font-weight:400; letter-spacing:.06em;
@@ -268,18 +223,6 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .hero__scroll svg { width:14px; height:14px; animation:heroBounce 1.8s ease-in-out infinite; }
 @keyframes heroBounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(5px); } }
 .hero.is-last .hero__scroll { opacity:0; }
-@media (max-height:760px){
-  .hero__content { top:36%; }
-  .hero__text { margin-top:1.75rem; }
-  .hero__cta { margin-top:1.5rem; }
-}
-@media (max-width:760px){
-  .hero__content { top:auto; bottom:6.5rem; }
-  .hero__text { max-width:none; margin-top:2rem; }
-  .hero__index { display:none; }
-  .hero__pill { --pill-w:10rem; font-size:.75rem; }
-  .hero__cta { margin-top:1.75rem; }
-}
 @media (prefers-reduced-motion:reduce){
   .hero__reveal > *, .hero__cta, .hero__scroll svg { animation:none !important; }
 }
@@ -551,7 +494,7 @@ button { font:inherit; color:inherit; cursor:pointer; }
 @media (prefers-reduced-motion:reduce){
   *{ scroll-behavior:auto !important; }
   .reveal,
-  .hero__pill, .hero h1, .hero__lead, .hero__cta > * { opacity:1 !important; transform:none !important; }
+  .hero__title, .hero__cta > * { opacity:1 !important; transform:none !important; }
   .obra:hover, .corp-card:hover { transform:none; }
   .obra__img:hover img, .obra__img:focus-visible img { transform:none; }
   .obra__scrim, .obra__info { transition:none; }

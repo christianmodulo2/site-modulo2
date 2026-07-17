@@ -6,12 +6,12 @@
 <title>Módulo2 Obras Comerciais · Sua loja aberta e faturando no dia marcado</title>
 <meta name="description" content="30 anos construindo lojas de varejo em shoppings, lojas de rua e obras corporativas. Fidelidade total ao projeto, prazo do shopping cumprido, chave na mão. Atendemos SC e PR.">
 <link rel="preconnect" href="">
-<link rel="preload" href="assets/img/hero/hero-boticario.png" as="image" fetchpriority="high">
+<link rel="preload" href="assets/img/hero/hero-anacapri.png" as="image" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="print.css" media="print">
 <meta property="og:title" content="Módulo2 · Obras Comerciais">
 <meta property="og:description" content="Sua loja aberta e faturando no dia marcado. Sem desculpas. Sem surpresas.">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#ccc0b6">
 <script>
   /* Marca a camada de animação cedo (antes do paint) para esconder os
@@ -20,14 +20,6 @@
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('anim');
   }
-  /* Tema claro/escuro: aplica antes do paint para não piscar o tema errado.
-     Prioridade: escolha salva > preferência do sistema > claro (padrão da marca). */
-  (function () {
-    var saved = null;
-    try { saved = localStorage.getItem('m2-theme'); } catch (e) {}
-    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
 </script>
 </head>
 <body>
@@ -54,15 +46,6 @@
           <circle cx="27.2" cy="16.8" r="1.1" fill="currentColor"/>
         </svg>
       </a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar para modo escuro">
-        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.2"/>
-          <path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/>
-        </svg>
-        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 14.3A8.3 8.3 0 1 1 9.7 4a6.6 6.6 0 0 0 10.3 10.3Z"/>
-        </svg>
-      </button>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -89,7 +72,7 @@
   <div class="hero__bg" id="heroBg">
     <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="1 de 4">
       <div class="hero__slide-inner">
-        <img src="assets/img/hero/hero-boticario.png" alt="Fachada da loja O Boticário executada pela Módulo2" fetchpriority="high">
+        <img src="assets/img/hero/hero-anacapri.png" alt="Interior da loja AnaCapri executada pela Módulo2" fetchpriority="high">
       </div>
     </div>
     <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="2 de 4">
@@ -104,7 +87,7 @@
     </div>
     <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="4 de 4">
       <div class="hero__slide-inner">
-        <img src="assets/img/hero/hero-anacapri.png" alt="Interior da loja AnaCapri executada pela Módulo2" loading="lazy">
+        <img src="assets/img/hero/hero-boticario.png" alt="Fachada da loja O Boticário executada pela Módulo2" loading="lazy">
       </div>
     </div>
   </div>
@@ -113,22 +96,6 @@
 
   <div class="wrap hero__content">
 
-    <!-- Navegação: trilho + pill deslizante -->
-    <div class="hero__nav">
-      <span class="hero__index" id="heroIndex" aria-hidden="true">01</span>
-      <div class="hero__track">
-        <div class="hero__pill" id="heroPill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 9.5 4.6 4.5h14.8L21 9.5"/>
-            <path d="M4 9.5v10h16v-10"/>
-            <path d="M3 9.5a2.4 2.4 0 0 0 4.5 0 2.4 2.4 0 0 0 4.5 0 2.4 2.4 0 0 0 4.5 0 2.4 2.4 0 0 0 4.5 0"/>
-            <path d="M9.5 19.5v-5h5v5"/>
-          </svg>
-          <span id="heroPillLabel">O Boticário</span>
-        </div>
-      </div>
-    </div>
-
     <div class="hero__text">
       <div class="hero__reveal" id="heroRevealTitle">
         <h1 class="hero__title" id="heroTitle">Especialistas em Implantação <em>Comercial.</em></h1>
@@ -136,12 +103,6 @@
       <div class="hero__cta" id="heroRevealCta">
         <a class="btn btn--primary btn--lg" href="https://wa.me/5547999639566" target="_blank" rel="noopener">
           Fale com um arquiteto
-        </a>
-        <a class="btn btn--ghost-light btn--lg" href="#obras">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 5v14M19 12l-7 7-7-7"/>
-          </svg>
-          Ver Portfólio
         </a>
       </div>
     </div>
@@ -709,26 +670,6 @@
     }
   })();
 
-  // Tema claro/escuro
-  (function(){
-    var btn = document.getElementById('themeToggle');
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (!btn) return;
-    var COLORS = { light: '#ccc0b6', dark: '#C2B7AD' };
-    function apply(theme){
-      document.documentElement.setAttribute('data-theme', theme);
-      btn.setAttribute('aria-label', theme === 'dark' ? 'Alternar para modo claro' : 'Alternar para modo escuro');
-      if (meta) meta.setAttribute('content', COLORS[theme]);
-    }
-    btn.addEventListener('click', function(){
-      var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      var next = current === 'dark' ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem('m2-theme', next); } catch (e) {}
-    });
-    apply(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-  })();
-
   // Hero — carrossel de fotos amarrado ao scroll (pin + clip-path + parallax).
   // Tudo aqui é função pura da posição de rolagem, recalculada a cada frame:
   // é isso que faz a foto acompanhar o scroll em vez de disparar sozinha ao
@@ -736,20 +677,17 @@
   // ou seja, depois que a última foto termina de revelar.
   (function () {
     var SLIDES = [
-      { label: 'O Boticário', title: 'Especialistas em Implantação <em>Comercial.</em>' },
+      { label: 'AnaCapri',    title: 'Do ponto vazio ao <em>pós-obra.</em>' },
       { label: 'Havaianas',   title: 'Sua loja inaugurada no <em>prazo combinado.</em>' },
       { label: 'Cia Marítima', title: 'Fidelidade total às especificações do <em>Projeto.</em>' },
-      { label: 'AnaCapri',    title: 'Do ponto vazio ao <em>pós-obra.</em>' }
+      { label: 'O Boticário', title: 'Especialistas em Implantação <em>Comercial.</em>' }
     ];
 
     var hero   = document.getElementById('hero');
     if (!hero) return;
+    var pin    = hero.querySelector('.hero__pin');
     var slides = Array.prototype.slice.call(document.querySelectorAll('.hero__slide'));
-    var pill   = document.getElementById('heroPill');
-    var label  = document.getElementById('heroPillLabel');
-    var index  = document.getElementById('heroIndex');
     var live   = document.getElementById('heroLive');
-    var track  = document.querySelector('.hero__track');
     var title  = document.getElementById('heroTitle');
 
     var reveals = [
@@ -774,25 +712,13 @@
       });
     }
 
-    function movePill(g) {
-      var free = track.clientWidth - pill.offsetWidth;
-      pill.style.transform = 'translateX(' + (g / (n - 1)) * free + 'px)';
-    }
-
     function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
 
     function setLabels(i) {
       if (i === current) return;
       current = i;
 
-      pill.classList.add('is-swapping');
-      setTimeout(function () {
-        label.textContent = SLIDES[i].label;
-        pill.classList.remove('is-swapping');
-      }, 160);
-
       title.innerHTML = SLIDES[i].title;
-      index.textContent = String(i + 1).padStart(2, '0');
       live.textContent = 'Slide ' + (i + 1) + ' de ' + n + ': ' + SLIDES[i].label;
       hero.classList.toggle('is-last', i === n - 1);
 
@@ -801,7 +727,11 @@
     }
 
     function render() {
-      var range = hero.offsetHeight - window.innerHeight;
+      // O pin fica abaixo do header (sticky também), então o "range" de
+      // rolagem é o espaço do pin, não a altura total da viewport — senão
+      // o conteúdo ancorado embaixo (CTA) ficaria cortado pelo header antes
+      // do pin realmente prender.
+      var range = hero.offsetHeight - pin.offsetHeight;
       if (range <= 0) return;
 
       var p = clamp(-hero.getBoundingClientRect().top / range, 0, 1);
@@ -817,7 +747,6 @@
         inners[k].style.transform = 'translate3d(0,' + drift.toFixed(2) + 'px,0)';
       }
 
-      movePill(g);
       setLabels(clamp(Math.round(g), 0, n - 1));
     }
 
